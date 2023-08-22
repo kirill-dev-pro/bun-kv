@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
+    "types": [
+      "./node_modules/bun-types" // add Bun global
+    ]
+  }
+}
