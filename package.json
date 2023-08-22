@@ -1,8 +1,12 @@
 {
   "name": "bun-kv",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bun simple key-value storage with SQLite",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kirill-dev-pro/bun-kv"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --write \"**/*.ts\""
