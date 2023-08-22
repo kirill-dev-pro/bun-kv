@@ -1,12 +1,13 @@
 {
   "name": "bun-kv",
-  "version": "0.0.1",
-  "description": "Bun KV class for simple key-value storage with SQLite",
+  "version": "0.0.2",
+  "description": "Bun simple key-value storage with SQLite",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --write \"**/*.ts\""
   },
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "bun-types": "^0.7.3",

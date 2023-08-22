@@ -1,15 +1,19 @@
 # bun-kv
 
-To install dependencies:
+A simple key-value store with SQLite.
 
 ```bash
-bun install
+bun add bun-kv
 ```
 
-To run:
+Sample usage:
 
-```bash
-bun run index.js
+```js
+import { KV } from 'bun-kv'
+
+const items = new KV('items.sqlite')
+
+await items.set('foo', 'bar')
+
+console.log(await items.get('foo'))
 ```
-
-This project was created using `bun init` in bun v0.6.1. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
