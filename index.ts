@@ -5,11 +5,11 @@ type Row = {
   value: string
 }
 
-const _rows2obj = (rows: Row[]) => {
+const _rows2obj = <T>(rows: Row[]) => {
   try {
     return rows.reduce<Record<string, any>>((acc, row) => {
       const key = row.key
-      acc[key] = JSON.parse(row.value)
+      acc[key] = JSON.parse(row.value) as T
       return acc
     }, {})
   } catch (error) {
@@ -18,7 +18,7 @@ const _rows2obj = (rows: Row[]) => {
   }
 }
 
-class KV {
+class KV<T> {
   db: Database
 
   getQuery: Statement<Row, [string]>
@@ -51,7 +51,7 @@ class KV {
     this.db.close()
   }
 
-  get<T>(key: string) {
+  get(key: string) {
     const row = this.getQuery.get(key)
     if (!row || !row.value) {
       return undefined
@@ -59,7 +59,7 @@ class KV {
     return JSON.parse(row.value) as T
   }
 
-  put(key: string, value: any) {
+  set(key: string, value: T) {
     const t = Date.now()
     const value_p = JSON.stringify(value)
     const update = this.get(key)
@@ -81,12 +81,12 @@ class KV {
 
   all() {
     const rows = this.getAllQuery.all()
-    return _rows2obj(rows)
+    return _rows2obj<T>(rows)
   }
 
   find(prefix: string) {
     const rows = this.findQuery.all(prefix + '%')
-    return _rows2obj(rows)
+    return _rows2obj<T>(rows)
   }
 }
 

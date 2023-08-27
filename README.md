@@ -1,19 +1,29 @@
 # bun-kv
 
-A simple key-value store with SQLite.
+A simple key-value store with SQLite that use `bun:sqlite`. No dependencies.
 
 ```bash
 bun add bun-kv
 ```
 
-Sample usage:
+### Sample usage with TypeScript:
 
-```js
+```ts
 import { KV } from 'bun-kv'
 
-const items = new KV('items.sqlite')
+type Item = {
+  id: string
+  created_at: number
+}
 
-await items.set('foo', 'bar')
+const items = new KV<Item>('items.sqlite')
 
-console.log(await items.get('foo'))
+items.set('foo', { created_at: Date.now(), id: 'foo' })
+
+const foo = items.get('foo')
+      ^? { created_at: number, id: string } | undefined
 ```
+
+### License
+
+MIT
