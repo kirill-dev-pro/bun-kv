@@ -1,6 +1,6 @@
 {
   "name": "bun-kv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bun simple key-value storage with SQLite",
   "main": "index.js",
   "repository": {

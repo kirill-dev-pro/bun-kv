@@ -7,13 +7,12 @@ type Row = {
 
 const _rows2obj = <T>(rows: Row[]) => {
   try {
-    return rows.reduce<Record<string, any>>((acc, row) => {
+    return rows.reduce<Record<string, T>>((acc, row) => {
       const key = row.key
       acc[key] = JSON.parse(row.value) as T
       return acc
     }, {})
   } catch (error) {
-    console.error(error)
     throw new Error("Can't parse value from database")
   }
 }
